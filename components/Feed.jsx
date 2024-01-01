@@ -56,6 +56,13 @@ const Feed = () => {
     );
   };
 
+  const handleTagClick = (tagName) => {
+    setSearchText(tagName);
+
+    const searchResult = filterPrompts(tagName);
+    setSearchedResults(searchResult);
+  };
+
   return (
     <section className="feed">
       {/* Search bar: */}
@@ -73,12 +80,12 @@ const Feed = () => {
       {searchText ? (
         <PromptCardList
           posts={searchedResults}
-          handleTagClick={() => {}}
+          handleTagClick={handleTagClick}
         />
       ) : (
       <PromptCardList
         posts={posts}
-        handleTagClick={()=>{}}
+        handleTagClick={handleTagClick}
       /> 
     )}
 
