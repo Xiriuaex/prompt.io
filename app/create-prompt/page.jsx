@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -10,6 +10,14 @@ const CreatePrompt = () => {
 
     const router = useRouter();
     const { data: session } = useSession();
+
+    useEffect(() =>{
+        const isLoggedIn = () =>{ 
+            if(!session) router.push('/');
+        }
+
+        isLoggedIn();
+    });
 
     const [submitting, setSubmitting] = useState(false);
     const [post, setPost] = useState({
@@ -35,7 +43,6 @@ const CreatePrompt = () => {
             if(response.ok) {
                 router.push('/');
             }
-            alert("prompt created!");
         } catch (error) {
             console.log(error);
         } finally {

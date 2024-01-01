@@ -9,6 +9,7 @@ import Form from "@/components/Form";
 const EditPrompt = () => {
 
     const router = useRouter();
+    const { data: session } = useSession();
     const searchParams= useSearchParams();
     const promptId = searchParams.get('id');
 
@@ -19,6 +20,11 @@ const EditPrompt = () => {
     });
 
     useEffect(() => {
+        const isLoggedIn = () =>{ 
+            if(!session) router.push('/');
+        }
+
+        isLoggedIn();
         const getPromptDetails = async () => {
             const response = await fetch(`api/prompt/${promptId}`);
             const data = await response.json();

@@ -13,7 +13,13 @@ const MyProfile = () => {
 
     const [posts, setPosts] = useState([]);
 
-    useEffect(() => {
+    useEffect(() => { 
+        const isLoggedIn = () =>{ 
+            if(!session) router.push('/');
+        }
+
+        isLoggedIn();
+    
         const fetchPosts = async () => {
           const response = await fetch(`api/users/${session?.user.id}/posts`);
           const data = await response.json();
