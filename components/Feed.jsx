@@ -25,13 +25,24 @@ const Feed = () => {
   const [searchedResults, setSearchedResults] = useState([]);
   const [searchTimeout, setSearchTimeout] = useState(null);
 
+    //Fectching prompts using the prompt API
+    const fetchPosts = async () => {
+      const response = await fetch('api/prompt');
+      const data = await response.json();
+      setPosts(data);
+    }
+    useEffect(() => {   
+      fetchPosts();
+    }, [])
+
+    
   const filterPrompts = (searchText) => {
     const regex = new RegExp(searchText, "i");
-    return posts.filter((post) => {
+    return posts.filter((post) =>
       regex.test(post.creator.username) ||
       regex.test(post.tag) ||
       regex.test(post.prompt)
-    });
+    );
   };
 
   const handleSearchChange = (e) => {
@@ -39,22 +50,11 @@ const Feed = () => {
     setSearchText(e.target.value);
     setSearchTimeout(
       setTimeout(() => {
-        setSearchedResults(filterPrompts(searchText));
+        const searchResult = filterPrompts(e.target.value);
+        setSearchedResults(searchResult);
       }, 500)
-    ) 
-  }
-
-  //Fectching prompts using the prompt API
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await fetch('api/prompt');
-      const data = await response.json();
-      setPosts(data);
-    }
-  
-    fetchPosts();
-  }, [])
-
+    );
+  };
 
   return (
     <section className="feed">
