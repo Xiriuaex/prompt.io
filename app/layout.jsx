@@ -13,10 +13,8 @@ const Layout = ({ children }) => {
     <html lang='en'>
         <body>
         <Provider>
-            <div className='main'>
-                <div className='gradient'/>
-            </div>
             <main className='app'>
+                <img src="../public/assets/images/abstract.jpg" alt="" />
                 <Nav />
                 {children}
             </main>
