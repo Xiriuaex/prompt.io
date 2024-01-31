@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
         <body>
         <Provider>
             <main className='app'>
-                <img src="../public/assets/images/abstract.jpg" alt="" />
+                <img src="../assets/images/abstract.jpg" className='absolute -z-50 min-w-[100%] h-[95vh] sm:h-[70vh] bg-fixed bg-center bg-no-repeat bg-cover top-0' alt="" />
                 <Nav />
                 {children}
             </main>

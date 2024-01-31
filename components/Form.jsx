@@ -5,13 +5,13 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
   return (
     <section className='w-full max-w-full flex-start flex-col'>
       <h1 className='head_text text-left'><span className='blue_gradient'>{type} Post</span></h1>
-      <p className='desc text-left max-w-md'>
+      <p className='desc text-left max-w-md text-[#ededed] ml-3 mt-5'>
         {type} and share amazing prompts with the world.
       </p>
 
       <form 
         onSubmit={handleSubmit}
-        className='mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism'
+        className='sm:mt-[35vh] mt-[63vw] mb-14 w-full max-w-2xl flex flex-col gap-7 glassmorphism'
       >
         <label>
           <span className='font-satoshi font-semibold text-base text-gray-700'>

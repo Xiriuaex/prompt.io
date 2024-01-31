@@ -29,6 +29,8 @@ const  PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
 
   return (
     <div className="prompt_card">
+
+      {/* profile div */}
       <div className="flex justify-between items-start gap-5">
         <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer" onClick={handleProfileClick}>
 
@@ -43,8 +45,8 @@ const  PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
 
           {/* Creator name and email: */}
           <div className="flex flex-col">
-            <h3 className="font-satoshi font-semibold text-gray-900">{post.creator.username}</h3>
-            <p className="font-inter text-sm text-gray-500">{post.creator.email}</p>
+            <h3 className="font-satoshi font-semibold text-[#3f3f3e]">{post.creator.username}</h3>
+            <p className="font-inter text-sm text-[#fea765] tracking-wide">{post.creator.email}</p>
           </div>
         </div>
 
@@ -60,9 +62,11 @@ const  PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           />
         </div>
       </div>
-
-      <p className="my-4 font-satoshi text-sm text-gray-700">{post.prompt}</p>
-      <p className="font-inter text-sm blue_gradient cursor-pointer"
+      
+      {/* prompt div */}
+      <p className="my-4 font-satoshi tracking-wide text-md text-[#3e3e3eb9]">{post.prompt}</p>
+      {/* tag div */}
+      <p className="font-inter text-sm text-[#676464] cursor-pointer"
          onClick={() => handleTagClick && handleTagClick(post.tag)}
       >
         {post.tag}
