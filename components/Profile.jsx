@@ -9,7 +9,7 @@ const Profile = ({ name, desc, data, handleEdit, handleDelete }) => {
       </h1>
       <p className="desc text-left mt-4 mb-52 sm:mb-52 text-[#ededed]">{desc}</p>
 
-      <div className="prompt_layout">
+      <div className="prompt_layout mt-48">
         {data.map((post) => (
           <PromptCard
             key={post._id}
